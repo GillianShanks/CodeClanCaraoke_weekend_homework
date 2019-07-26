@@ -33,11 +33,13 @@ class Room
   end
 
   def check_in(guest)
-    if !room_full?()
-      add(guest)
-    else
-      return "No Entry."
+    if can_pay?(guest)
+      if !room_full?()
+        add(guest)
+        guest.pays(@entry_fee)
+      end
     end
+    return "No Entry."
   end
 
   def can_pay?(guest)
