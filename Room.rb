@@ -52,4 +52,12 @@ class Room
     @till += fee
   end
 
+  def check_song_list(guest)
+    for song in @song_list
+      if song.title == guest.fav_song
+        return guest.sees_song(song.title)
+      end
+    end
+  end
+
 end

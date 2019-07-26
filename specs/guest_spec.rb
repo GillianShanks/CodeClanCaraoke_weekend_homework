@@ -26,6 +26,6 @@ class GuestTest < MiniTest::Test
 
   def test_woo_for_fav_song()
     song_title = "Bad Touch"
-    assert_equal("Woo", @guest1.sees_song(song_title))
+    assert_equal("Woo", @guest1.sees_song(song))
   end
 end

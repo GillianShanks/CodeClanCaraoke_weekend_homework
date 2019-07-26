@@ -9,8 +9,8 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("90s Room", 5)
     @song1 = Song.new("The Bad Touch", "Blood Hound Gang")
-    @guest1 = Guest.new("Louise", 100)
-    @guest2 = Guest.new("Ally", 4)
+    @guest1 = Guest.new("Louise", 100, "The Bad Touch")
+    @guest2 = Guest.new("Ally", 4, "Umbrella")
   end
 
   def test_can_get_room_name()
@@ -110,6 +110,9 @@ class RoomTest < MiniTest::Test
     assert_equal(5, @room1.till)
   end
 
-  
+  def test_guests_fav_song_on_playlist()
+    @room1.queue_song(@song1)
+    assert_equal("Woo", @room1.check_song_list(@guest1))
+  end
 
 end
