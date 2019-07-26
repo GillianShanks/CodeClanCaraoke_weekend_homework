@@ -23,4 +23,9 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.checked_in_count())
   end
 
+  def test_add_song_to_queue()
+    @room1.queue_song(@song1)
+    assert_equal(1, @room1.song_list_length())
+  end
+
 end

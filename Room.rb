@@ -13,4 +13,8 @@ class Room
   def checked_in_count()
     return @checked_in.count()
   end
+
+  def queue_song(song)
+    @song_list << song
+  end
 end
