@@ -110,4 +110,6 @@ class RoomTest < MiniTest::Test
     assert_equal(5, @room1.till)
   end
 
+  
+
 end
