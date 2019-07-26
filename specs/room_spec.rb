@@ -60,22 +60,24 @@ class RoomTest < MiniTest::Test
     assert_equal(true, @room1.room_full?())
   end
 
-  def test_check_in_guest__room_has_space()
+  def test_check_in_guest__room_has_space_has_money()
     @room1.check_in(@guest1)
     assert_equal(1, @room1.checked_in_count())
     assert_equal(95, @guest1.wallet)
+    assert_equal(5, @room1.till)
   end
 
-  def test_check_in_guest__room_full()
+  def test_check_in_guest__room_full_not_pay()
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
+    #till is 25
     assert_equal("No Entry.", @room1.check_in(@guest2))
     assert_equal(5, @room1.checked_in_count())
     assert_equal(4, @guest2.wallet)
-
+    assert_equal(25, @room1.till)
   end
 
   def test_get_entry_fee()
@@ -96,10 +98,11 @@ class RoomTest < MiniTest::Test
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
     @room1.check_in(@guest1)
-    #wallet is 75 after 5 entries of 5
+    #wallet is 75 after 5 entries of 5, till is 25
     assert_equal("No Entry.", @room1.check_in(@guest1))
     assert_equal(5, @room1.checked_in_count())
     assert_equal(75, @guest1.wallet)
+    assert_equal(25, @room1.till)
   end
 
   def test_add_money_to_till()

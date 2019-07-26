@@ -38,6 +38,7 @@ class Room
       if !room_full?()
         add(guest)
         guest.pays(@entry_fee)
+        add_fee(@entry_fee)
       end
     end
     return "No Entry."
