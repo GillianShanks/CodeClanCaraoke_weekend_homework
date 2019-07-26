@@ -11,4 +11,8 @@ class Guest
   def pays(fee)
     return @wallet -= fee
   end
+
+  def sees_song(title)
+    return "Woo"
+  end
 end
