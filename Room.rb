@@ -38,7 +38,10 @@ class Room
     else
       return "No Entry."
     end
+  end
 
+  def can_pay?(guest)
+    return guest.wallet >= @entry_fee
   end
 
 end

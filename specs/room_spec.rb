@@ -9,8 +9,8 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("90s Room", 5)
     @song1 = Song.new("The Bad Touch", "Blood Hound Gang")
-    @guest1 = Guest.new("Louise")
-    @guest2 = Guest.new("Ally")
+    @guest1 = Guest.new("Louise", 100)
+    @guest2 = Guest.new("Ally", 4)
   end
 
   def test_can_get_room_name()
@@ -78,6 +78,14 @@ class RoomTest < MiniTest::Test
 
   def test_get_entry_fee()
     assert_equal(5, @room1.entry_fee)
+  end
+
+  def test_can_guest_pay__yes()
+    assert_equal(true, @room1.can_pay?(@guest1))
+  end
+  
+  def test_can_guest_pay__no()
+    assert_equal(false, @room1.can_pay?(@guest2))
   end
 
 end
