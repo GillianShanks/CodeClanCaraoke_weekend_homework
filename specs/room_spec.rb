@@ -9,6 +9,7 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("90s Room")
     @song1 = Song.new("The Bad Touch", "Blood Hound Gang")
+    @guest1 = Guest.new("Louise")
   end
 
   def test_can_get_room_name()
@@ -26,6 +27,11 @@ class RoomTest < MiniTest::Test
   def test_add_song_to_queue()
     @room1.queue_song(@song1)
     assert_equal(1, @room1.song_list_length())
+  end
+
+  def test_check_in_guest()
+    @room1.check_in(@guest1)
+    assert_equal(1, @room1.checked_in_count())
   end
 
 end

@@ -17,4 +17,8 @@ class Room
   def queue_song(song)
     @song_list << song
   end
+
+  def check_in(guest)
+    @checked_in << guest
+  end
 end
