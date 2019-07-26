@@ -19,4 +19,8 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.song_list_length())
   end
 
+  def test_checked_in_guests_starts_at_zero()
+    assert_equal(0, @room1.checked_in_count())
+  end
+
 end
