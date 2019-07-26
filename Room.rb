@@ -19,11 +19,11 @@ class Room
     @song_list << song
   end
 
-  def check_in(guest)
+  def add(guest)
     @checked_in << guest
   end
 
-  def check_out(guest)
+  def remove(guest)
     @checked_in.delete(guest)
   end
 
