@@ -21,4 +21,9 @@ class Room
   def check_in(guest)
     @checked_in << guest
   end
+
+  def check_out(guest)
+    @checked_in.delete(guest)
+  end
+
 end
