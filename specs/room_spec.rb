@@ -7,7 +7,7 @@ require_relative ("../Guest.rb")
 class RoomTest < MiniTest::Test
 
   def setup()
-    @room1 = Room.new("90s Room")
+    @room1 = Room.new("90s Room", 5)
     @song1 = Song.new("The Bad Touch", "Blood Hound Gang")
     @guest1 = Guest.new("Louise")
     @guest2 = Guest.new("Ally")
@@ -40,6 +40,10 @@ class RoomTest < MiniTest::Test
     @room1.check_in(@guest2)
     @room1.check_out(@guest1)
     assert_equal(1, @room1.checked_in_count())
+  end
+
+  def test_get_rooms_max_numb_of_guests()
+    assert_equal(5, @room1.max_guests)
   end
 
 end
