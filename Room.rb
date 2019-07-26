@@ -27,4 +27,8 @@ class Room
     @checked_in.delete(guest)
   end
 
+  def room_full?()
+    return checked_in_count() == @max_guests
+  end
+
 end

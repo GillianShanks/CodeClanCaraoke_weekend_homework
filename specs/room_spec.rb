@@ -46,4 +46,18 @@ class RoomTest < MiniTest::Test
     assert_equal(5, @room1.max_guests)
   end
 
+  def test_is_room_full__false()
+    @room1.check_in(@guest1)
+    assert_equal(false, @room1.room_full?())
+  end
+
+  def test_is_room_full__true()
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    assert_equal(true, @room1.room_full?())
+  end
+
 end
