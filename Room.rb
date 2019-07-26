@@ -31,4 +31,13 @@ class Room
     return checked_in_count() == @max_guests
   end
 
+  def check_in(guest)
+    if !room_full?()
+      add(guest)
+    else
+      return "No Entry."
+    end
+
+  end
+
 end

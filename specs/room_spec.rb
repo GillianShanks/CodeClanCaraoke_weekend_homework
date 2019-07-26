@@ -60,4 +60,20 @@ class RoomTest < MiniTest::Test
     assert_equal(true, @room1.room_full?())
   end
 
+  def test_check_in_guest__room_has_space()
+    @room1.check_in(@guest1)
+    assert_equal(1, @room1.checked_in_count())
+  end
+
+  def test_check_in_guest__room_full()
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    @room1.check_in(@guest1)
+    assert_equal("No Entry.", @room1.check_in(@guest2))
+    assert_equal(5, @room1.checked_in_count())
+
+  end
+
 end
