@@ -1,11 +1,12 @@
 class Room
-  attr_reader :name, :max_guests, :entry_fee
+  attr_reader :name, :max_guests, :entry_fee, :till
   def initialize(name, max_guests)
     @name = name
     @song_list = []
     @checked_in = []
     @max_guests = max_guests
     @entry_fee = 5
+    @till = 0
   end
 
   def song_list_length()
@@ -44,6 +45,10 @@ class Room
 
   def can_pay?(guest)
     return guest.wallet >= @entry_fee
+  end
+
+  def add_fee(fee)
+    @till += fee
   end
 
 end

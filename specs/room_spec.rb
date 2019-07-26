@@ -102,4 +102,9 @@ class RoomTest < MiniTest::Test
     assert_equal(75, @guest1.wallet)
   end
 
+  def test_add_money_to_till()
+    @room1.add_fee(5)
+    assert_equal(5, @room1.till)
+  end
+
 end
