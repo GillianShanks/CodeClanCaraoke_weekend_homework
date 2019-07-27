@@ -134,5 +134,18 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.song_list_length())
   end
 
+  def test_check_out_guest_removing_songs()
+    @room1.add(@guest1)
+    @room1.add(@guest2)
+    @room1.queue_song(@song1, @guest1)
+    @room1.queue_song(@song2, @guest1)
+    @room1.queue_song(@song1, @guest2)
+    @room1.queue_song(@song2, @guest2)
+    #currently: guests==2, songs==4
+    @room1.check_out(@guest1)
+    assert_equal(1, @room1.checked_in_count())
+    assert_equal(2, @room1.song_list_length())
+  end
+
 
 end

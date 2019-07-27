@@ -74,4 +74,8 @@ class Room
     #updates song_list to be a song_list without the songs who are paired with that guest.
   end
 
+  def check_out(guest)
+    remove(guest)
+    remove_songs(guest)
+  end
 end
