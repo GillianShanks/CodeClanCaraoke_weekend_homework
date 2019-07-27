@@ -26,7 +26,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_add_song_to_queue()
-    @room1.queue_song(@song1)
+    @room1.queue_song(@song1, @guest1)
     assert_equal(1, @room1.song_list_length())
   end
 
@@ -111,7 +111,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_guests_fav_song_on_playlist()
-    @room1.queue_song(@song1)
+    @room1.queue_song(@song1, @guest1)
     assert_equal("Woo", @room1.check_song_list(@guest1))
   end
 
@@ -120,5 +120,9 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.reset_till())
 
   end
+
+  # def test_remove_song_from_playlist_by_guest()
+  #
+  # end
 
 end

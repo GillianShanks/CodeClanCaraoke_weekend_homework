@@ -1,3 +1,5 @@
+require("pry-byebug")
+
 class Room
   attr_reader :name, :max_guests, :entry_fee, :till
   def initialize(name, max_guests)
@@ -17,8 +19,9 @@ class Room
     return @checked_in.count()
   end
 
-  def queue_song(song)
-    @song_list << song
+  def queue_song(song, guest)
+    @song_list << [song, guest]
+    #can't make hash with key=song istance, then reference attribute of hash key (title) when checking song_list below?
   end
 
   def add(guest)
@@ -53,9 +56,10 @@ class Room
   end
 
   def check_song_list(guest)
-    for song in @song_list
-      if song.title == guest.fav_song
-        return guest.sees_song(song.title)
+    for entry in @song_list
+      # binding.pry
+      if entry[0].title == guest.fav_song
+        return guest.sees_song(entry[0].title)
       end
     end
   end
