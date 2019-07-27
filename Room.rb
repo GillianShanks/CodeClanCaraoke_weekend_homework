@@ -58,6 +58,7 @@ class Room
   def check_song_list(guest)
     for entry in @song_list
       # binding.pry
+      # if entry[:song].title ==...
       if entry[0].title == guest.fav_song
         return guest.sees_song(entry[0].title)
       end
@@ -66,6 +67,11 @@ class Room
 
   def reset_till()
     @till = 0
+  end
+
+  def remove_songs(guest)
+    @song_list=@song_list.drop_while{|entry|entry[1]==guest}
+    #updates song_list to be a song_list without the songs who are paired with that guest.
   end
 
 end

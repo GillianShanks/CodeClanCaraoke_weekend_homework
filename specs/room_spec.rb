@@ -9,6 +9,7 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("90s Room", 5)
     @song1 = Song.new("The Bad Touch", "Blood Hound Gang")
+    @song2 = Song.new("Umbrella", "Rhianna")
     @guest1 = Guest.new("Louise", 100, "The Bad Touch")
     @guest2 = Guest.new("Ally", 4, "Umbrella")
   end
@@ -121,8 +122,17 @@ class RoomTest < MiniTest::Test
 
   end
 
-  # def test_remove_song_from_playlist_by_guest()
-  #
+  # def test_remove_entry()
+  #   @room1.queue_song(@song1, @guest1)
+  #   @room1.remove_entry
   # end
+
+  def test_remove_songs_from_playlist_by_guest__many_songs()
+    @room1.queue_song(@song1, @guest1)
+    @room1.queue_song(@song2, @guest1)
+    @room1.remove_songs(@guest1)
+    assert_equal(0, @room1.song_list_length())
+  end
+
 
 end
