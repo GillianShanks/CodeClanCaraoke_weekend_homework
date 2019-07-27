@@ -38,5 +38,7 @@ class BarTest < MiniTest::Test
     @room2.add_fee(20)
     @bar.collect_room_fees()
     assert_equal(30, @bar.total)
+    assert_equal(0, @room1.till)
+    assert_equal(0, @room2.till)
   end
 end

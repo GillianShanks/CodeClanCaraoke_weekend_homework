@@ -18,4 +18,9 @@ class Bar
     @total = @rooms.map{|room| room.till}.reduce{|total, till| total + till}
   end
 
+  def collect_room_fees()
+    add_room_fees()
+    @rooms.each{|room| room.reset_till}
+  end
+
 end
