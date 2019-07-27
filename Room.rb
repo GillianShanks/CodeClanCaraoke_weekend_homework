@@ -60,4 +60,8 @@ class Room
     end
   end
 
+  def reset_till()
+    @till = 0
+  end
+
 end

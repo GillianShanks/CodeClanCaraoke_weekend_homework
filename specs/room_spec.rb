@@ -115,4 +115,10 @@ class RoomTest < MiniTest::Test
     assert_equal("Woo", @room1.check_song_list(@guest1))
   end
 
+  def test_reset_till()
+    @room1.add_fee(5)
+    assert_equal(0, @room1.reset_till())
+
+  end
+
 end
